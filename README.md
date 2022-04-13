@@ -6,6 +6,8 @@
 
 A NextJS project to generate random worlds based on different algorithms.
 
+[Click here](https://map-generator-react.vercel.app/) to see a demo of this project.
+
 ### Algorithms
 
 - Perlin Noise
