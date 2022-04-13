@@ -1,0 +1,19 @@
+.settings {
+  @apply absolute w-60 bg-neutral-800;
+  @apply top-10 left-10;
+  @apply flex flex-col p-4;
+
+  & label {
+    @apply text-white font-bold uppercase text-lg;
+  }
+
+  & input {
+    @apply w-full;
+    @apply p-2;
+    @apply border-2 border-neutral-700;
+    // @apply rounded-lg;
+    @apply text-neutral-900 font-bold;
+    @apply focus:border-blue-500;
+    @apply bg-neutral-900 text-white;
+  }
+}

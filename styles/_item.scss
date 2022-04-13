@@ -1,0 +1,38 @@
+.item-container,
+.empty-slot {
+  @apply w-24 h-24 relative border-4 p-2;
+}
+.empty-slot {
+  @apply border-neutral-800;
+}
+.item {
+  @apply w-full h-full relative;
+  // @apply border-4;
+  @apply relative cursor-pointer;
+  & > img {
+    @apply w-full h-full object-cover;
+    image-rendering: pixelated;
+  }
+}
+.selected {
+  // @apply absolute;
+  @apply bg-gradient-to-b from-pink-800 to-pink-900;
+  @apply border-pink-200;
+}
+
+.common {
+  @apply bg-gradient-to-b from-neutral-800 to-neutral-900;
+  @apply border-neutral-500;
+}
+.uncommon {
+  @apply bg-gradient-to-b from-green-800 to-green-900;
+  @apply border-green-500;
+}
+.rare {
+  @apply bg-gradient-to-b from-yellow-800 to-yellow-900;
+  @apply border-yellow-500;
+}
+.epic {
+  @apply bg-gradient-to-b from-purple-800 to-purple-900;
+  @apply border-purple-500;
+}
