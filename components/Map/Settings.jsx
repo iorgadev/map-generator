@@ -1,33 +1,33 @@
 import React from "react";
+import { GlobeIcon, CogIcon } from "@heroicons/react/outline";
 
 function Settings({
   setMapSettings,
   mapSettings,
   setNoiseSettings,
   noiseSettings,
+  generateNewMap,
 }) {
   return (
     <div className="settings">
-      <span className="block mb-3 text-xl font-bold text-neutral-200">
-        Map Settings:
-      </span>
+      <div className="flex items-center justify-center p-2 mb-3 space-x-2 text-2xl font-bold text-white border-b-4 border-green-900 border-opacity-25">
+        <CogIcon className="w-16 h-16 text-amber-400" />
+        <div className="flex flex-col space-y-2 transform translate-y-2">
+          <span className="text-6xl leading-[1rem] text-green-100">Map</span>
+          <span>Generator</span>
+        </div>
+      </div>
       <label>
-        Width:
+        Size (x,y):
         <input
           type="number"
           value={mapSettings.width}
           onChange={(e) =>
-            setMapSettings((prev) => ({ ...prev, width: e.target.value }))
-          }
-        />
-      </label>
-      <label>
-        Height:
-        <input
-          type="number"
-          value={mapSettings.height}
-          onChange={(e) =>
-            setMapSettings((prev) => ({ ...prev, height: e.target.value }))
+            setMapSettings((prev) => ({
+              ...prev,
+              width: e.target.value,
+              height: e.target.value,
+            }))
           }
         />
       </label>
@@ -52,6 +52,19 @@ function Settings({
               octaves: e.target.value,
             }))
           }
+          onWheel={(e) => {
+            if (e.deltaY > 0) {
+              setNoiseSettings((prev) => ({
+                ...prev,
+                octaves: prev.octaves + 1,
+              }));
+            } else {
+              setNoiseSettings((prev) => ({
+                ...prev,
+                octaves: prev.octaves - 1,
+              }));
+            }
+          }}
         />
       </label>
       <label>
@@ -112,12 +125,16 @@ function Settings({
             if (e.deltaY > 0) {
               setNoiseSettings((prev) => ({
                 ...prev,
-                persistence: prev.persistence + 0.01,
+                persistence:
+                  Math.round((prev.persistence + 0.01 + Number.EPSILON) * 100) /
+                  100,
               }));
             } else {
               setNoiseSettings((prev) => ({
                 ...prev,
-                persistence: prev.persistence - 0.01,
+                persistence:
+                  Math.round((prev.persistence - 0.01 + Number.EPSILON) * 100) /
+                  100,
               }));
             }
           }}
@@ -136,6 +153,15 @@ function Settings({
           }
         />
       </label> */}
+      <div className="flex items-center justify-center w-full pt-10">
+        <button
+          onClick={generateNewMap}
+          className="flex items-center justify-center p-2 space-x-1 text-2xl uppercase bg-blue-500 border-4 border-blue-800 text-blue-50 hover:bg-blue-600"
+        >
+          <GlobeIcon className="w-6 h-6 text-white" />
+          <span>Generate Map</span>
+        </button>
+      </div>
     </div>
   );
 }
