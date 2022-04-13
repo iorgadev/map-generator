@@ -1,5 +1,6 @@
 import React from "react";
 import { GlobeIcon, CogIcon } from "@heroicons/react/outline";
+import Link from "next/link";
 
 function Settings({
   setMapSettings,
@@ -161,6 +162,16 @@ function Settings({
           <GlobeIcon className="w-6 h-6 text-white" />
           <span>Generate Map</span>
         </button>
+      </div>
+      <div className="flex flex-col items-center justify-end flex-grow -space-y-3 text-white">
+        <span className="text-green-300">
+          <Link href="https://github.com/iorgadev/map-generator">
+            <a target="_blank" className="text-white hover:text-blue-200">
+              Map Generator
+            </a>
+          </Link>{" "}
+          on Github
+        </span>
       </div>
     </div>
   );
