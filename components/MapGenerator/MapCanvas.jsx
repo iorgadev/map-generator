@@ -1,9 +1,5 @@
 import { useRef, useEffect, useState } from "react";
 
-function clamp(min, max) {
-  return Math.min(Math.max(this, min), max);
-}
-
 import { getTileType, getTile } from "../MapGenerator";
 
 export default function MapCanvas({ map, mapSettings, options }) {
@@ -13,7 +9,7 @@ export default function MapCanvas({ map, mapSettings, options }) {
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [offsetPos, setOffsetPos] = useState({ x: 0, y: 0 });
-  const [panningPos, setPanningPos] = useState({ x: 0, y: 0 });
+  const [panningPos, setPanningPos] = useState({ x: 550, y: 50 });
   const [scale, setScale] = useState(options.scale);
 
   const scaledValueToInt = (value) =>
