@@ -112,7 +112,7 @@ function MiniRPG() {
   });
   const [map, setMap] = useState();
   const [noiseSettings, setNoiseSettings] = useState({
-    octaves: 4,
+    octaves: 5,
     amplitude: 0.2,
     persistence: 0.1,
     // frequency: 1,
@@ -197,7 +197,7 @@ function MiniRPG() {
     return grid;
   }
 
-  useEffect(() => {
+  const generateNewMap = () => {
     const noise = perlin.generatePerlinNoise(
       mapSettings.width,
       mapSettings.height,
@@ -208,22 +208,27 @@ function MiniRPG() {
       }
     );
     setMap((prev) => createMap(noise, mapSettings.width, mapSettings.height));
+  };
+
+  useEffect(() => {
+    generateNewMap();
   }, [mapSettings, noiseSettings]);
 
   useEffect(() => {
     setCanvasOptions({
       width: windowSize.width,
       height: windowSize.height,
-      scale: 0.25,
+      scale: 0.15,
     });
   }, [windowSize]);
 
   const updateDimensions = () => {
-    console.log("updateDimensions: ", windowSize);
+    // console.log("updateDimensions: ", windowSize);
     setWindowSize({ width: window.innerWidth, height: window.innerHeight });
   };
 
   useEffect(() => {
+    generateNewMap();
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
@@ -237,6 +242,7 @@ function MiniRPG() {
         mapSettings={mapSettings}
         noiseSettings={noiseSettings}
         setNoiseSettings={setNoiseSettings}
+        generateNewMap={generateNewMap}
       />
       <MapCanvas map={map} mapSettings={mapSettings} options={canvasOptions} />
     </div>
