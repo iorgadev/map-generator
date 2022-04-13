@@ -1,7 +1,7 @@
 # React Map Generator
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/2624432/163268584-c74cdd21-aed7-44ab-8d5d-150423a6ca22.png" alt="react map generator" />
+  <img src="https://user-images.githubusercontent.com/2624432/163268584-c74cdd21-aed7-44ab-8d5d-150423a6ca22.png" width="480" alt="react map generator" />
 </p>
 
 A NextJS project to generate random worlds based on different algorithms.
