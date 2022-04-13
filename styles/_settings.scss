@@ -1,7 +1,7 @@
 .settings {
-  @apply absolute w-60 bg-neutral-800;
-  @apply top-10 left-10;
-  @apply flex flex-col p-4;
+  @apply absolute w-60 bg-green-700 h-screen;
+  // @apply top-10 left-10;
+  @apply flex flex-col p-4 space-y-1;
 
   & label {
     @apply text-white font-bold uppercase text-lg;
@@ -10,10 +10,10 @@
   & input {
     @apply w-full;
     @apply p-2;
-    @apply border-2 border-neutral-700;
+    @apply border-2 border-green-900;
     // @apply rounded-lg;
-    @apply text-neutral-900 font-bold;
-    @apply focus:border-blue-500;
-    @apply bg-neutral-900 text-white;
+    @apply text-green-900 font-bold;
+    @apply focus:border-green-500 outline-none;
+    @apply bg-green-900 text-white text-2xl;
   }
 }
